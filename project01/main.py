@@ -1,4 +1,3 @@
-import random
 import time
 from tkinter import Canvas, Tk
 
@@ -40,6 +39,9 @@ creature_with_speed = {"panda1": 3, "panda2": 3, "panda3": 3, "panda4": 3, "pand
 
 speed = 0.05
 
+helpers.make_creature(canvas, (random.uniform(80, window_width), random.uniform(80, window_height * 0.75)),
+                      width=random.uniform(40, 120), primary_color='brown', secondary_color='#227876', tag="panda5")
+
 
 def updater(last):
     return "panda" + str(last + 1)
@@ -57,6 +59,8 @@ def pass_data(event):
 
 
 canvas.bind(MOUSE_CLICK, pass_data)
+
+t0 = time.time()
 
 while True:
     time.sleep(speed)
@@ -77,6 +81,19 @@ while True:
             creature_with_speed[key] = -1 * value + random.choice([1, -1])
 
     speed /= 3
+
+    if time.time() - t0 > 3:
+        t0 = time.time()
+        last_str = updater(len(list(creature_with_speed.keys())))
+
+        helpers.make_creature(canvas, (random.uniform(80, window_width), random.uniform(80, window_height * 0.75)),
+                              width=random.uniform(40, 120),
+                              primary_color=random.choice(['brown', 'red', 'green', 'pink']),
+                              secondary_color=random.choice(['brown', 'red', 'green', 'pink']),
+                              tag=last_str)
+        creature_with_speed[last_str] = 3
+
+        helpers.make_landscape_object(canvas, (window_width, window_height), size=100, tag="landscape")
 
 ########################## YOUR CODE ABOVE THIS LINE ##############################
 

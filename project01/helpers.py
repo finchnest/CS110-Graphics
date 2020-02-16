@@ -129,4 +129,5 @@ def make_landscape_object(canvas, center, size=100, tag="landscape"):
                        15,
                        tag)
 
-    make_rectangle(canvas, (0, center[1] * 0.82), center[0], center[1] * 0.18, "brown", tag)
+    make_rectangle(canvas, (0, center[1] * 0.82), center[0], center[1] * 0.18,
+                   random.choice(['brown', 'pink', 'green']), tag)
