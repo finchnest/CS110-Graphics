@@ -1,5 +1,5 @@
 import time
-from tkinter import Canvas, Tk
+from tkinter import *
 
 import helpers
 
@@ -16,6 +16,7 @@ canvas.pack()
 
 ########################## YOUR CODE BELOW THIS LINE ##############################
 MOUSE_CLICK = '<Button-1>'
+
 canvas.create_text(
     (window_width / 10, window_height / 10),
     text='Click anywhere add a creature',
@@ -48,10 +49,16 @@ def updater(last):
 
 
 def pass_data(event):
+    # if canvas.find_withtag(CURRENT) !=None:
+    #     shape_ids = canvas.find_withtag(CURRENT)
+    #     for object in shape_ids:
+    #         canvas.delete(object)
+
     last_str = updater(len(list(creature_with_speed.keys())))
 
     helpers.make_creature(canvas, (event.x, event.y),
-                          width=random.uniform(40, 120), primary_color=random.choice(['brown', 'red', 'green', 'pink']),
+                          width=random.uniform(40, 120),
+                          primary_color=random.choice(['brown', 'red', 'green', 'pink']),
                           secondary_color=random.choice(['brown', 'red', 'green', 'pink']),
                           tag=last_str)
 
