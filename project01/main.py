@@ -18,15 +18,22 @@ canvas.pack()
 ########################## YOUR CODE BELOW THIS LINE ##############################
 MOUSE_CLICK = '<Button-1>'
 KEY_PRESS = '<Key>'
+
+back = PhotoImage(file='bv.png')
+
+canvas.create_image(500, 10, image=back, anchor=NW)
+
 canvas.create_text(
     (window_width / 10, window_height / 10),
     text='Click anywhere add a creature',
+
     font=("Purisa", 12)
 )
 
 canvas.create_text(
     (window_width / 5, window_height / 7),
     text='You can make the Black/white Panda FLY!!! Use up arrow continously',
+
     font=("Purisa", 12)
 )
 
