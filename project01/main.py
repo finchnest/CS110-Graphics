@@ -19,9 +19,9 @@ canvas.pack()
 MOUSE_CLICK = '<Button-1>'
 KEY_PRESS = '<Key>'
 
-back = PhotoImage(file='bv.png')
+la = PhotoImage(file='la.png')
 
-canvas.create_image(500, 10, image=back, anchor=NW)
+canvas.create_image(0, 0, image=la, anchor=NW)
 
 canvas.create_text(
     (window_width / 10, window_height / 10),
@@ -56,6 +56,13 @@ helpers.make_landscape_object(canvas, (window_width, window_height), size=100, t
 creature_with_speed = {"panda1": 3, "panda2": 3, "panda3": 3, "panda4": 3, "panda5": 3, "obj": [0, 0]}
 
 speed = 0.05
+
+counter = 0
+while counter < 10:
+    helpers.my_make_circle(canvas, (random.uniform(0, window_width), random.uniform(0, window_height * 0.3)),
+                           random.uniform(5, 15), tag="comets")
+
+    counter += 1
 
 
 def updater(last):
@@ -106,6 +113,8 @@ while True:
         elif (itemy != "obj"):
             update_position(canvas, itemy, creature_with_speed.get(itemy), y=0)
 
+    update_position(canvas, 'comets', x=-3, y=0)
+
     gui.update()
     print(canvas.coords("obj"))
 
@@ -128,6 +137,10 @@ while True:
         creature_with_speed[last_str] = 3
 
         helpers.make_landscape_object(canvas, (window_width, window_height), size=100, tag="landscape")
+
+        for x in range(7):
+            helpers.my_make_circle(canvas, (random.uniform(0, window_width), random.uniform(0, window_height * 0.3)),
+                                   random.uniform(5, 15), tag="comets")
 
 ########################## YOUR CODE ABOVE THIS LINE ##############################
 

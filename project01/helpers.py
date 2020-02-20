@@ -36,7 +36,7 @@ def make_creature(canvas, center: tuple, width: int = 100, primary_color: str = 
     my_make_oval(canvas, (center[0] - width / 7, center[1] - width / 7), width / 24, width / 24, "white", tag)
 
 
-def my_make_oval(canvas, center: tuple, radius_x: float, radius_y: float, fill: str, tag=None):
+def my_make_oval(canvas, center: tuple, radius_x: float, radius_y: float, fill: str = "white", tag=None):
     canvas.create_oval(
         [
             (center[0] - radius_x, center[1] - radius_y),
@@ -46,7 +46,7 @@ def my_make_oval(canvas, center: tuple, radius_x: float, radius_y: float, fill: 
         fill=fill)
 
 
-def my_make_circle(canvas, center: tuple, radius: int, fill: str, tag=None):
+def my_make_circle(canvas, center: tuple, radius: int, fill: str = "white", tag=None):
     my_make_oval(canvas, center, radius, radius, fill, tag)
 
 
