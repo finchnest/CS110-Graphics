@@ -79,24 +79,28 @@ def my_make_curvy_line(canvas, leftE, rightE, bottomE, thickness, tag=None):
 
 def make_landscape_object(canvas, center, size=100, tag="landscape"):
     # calls to curve line maker functions with different arguments to create branches.
-    make_rectangle(canvas, (center[0] * 0.20, center[1] * 0.6), 20, center[1] * 0.22, "black", tag)
 
-    my_make_curvy_line(canvas, (center[0] * 0.2 - 50, center[1] * 0.6 + 10),
-                       (center[0] * 0.2 - 10, center[1] * 0.6 + 20), (center[0] * 0.2 + 10, center[1] * 0.6 + 50), 15,
-                       tag)
-    my_make_curvy_line(canvas, (center[0] * 0.2, center[1] * 0.6 + 50), (center[0] * 0.2 + 20, center[1] * 0.6 + 20),
-                       (center[0] * 0.2 + 70, center[1] * 0.6 + 10), 15, tag)
+    # branches, tree and ground code
+    make_rectangle(canvas, (center[0] * 0.20, center[1] * 0.5), 20, center[1] * 0.22, "black", tag)
 
-    my_make_curvy_line(canvas, (center[0] * 0.2 - 50, center[1] * 0.6 + 60),
-                       (center[0] * 0.2 - 10, center[1] * 0.6 + 70), (center[0] * 0.2 + 10, center[1] * 0.6 + 100), 15,
+    my_make_curvy_line(canvas, (center[0] * 0.2 - 50, center[1] * 0.5 + 10),
+                       (center[0] * 0.2 - 10, center[1] * 0.5 + 20), (center[0] * 0.2 + 10, center[1] * 0.5 + 50), 15,
                        tag)
-    my_make_curvy_line(canvas, (center[0] * 0.2, center[1] * 0.6 + 100), (center[0] * 0.2 + 20, center[1] * 0.6 + 70),
-                       (center[0] * 0.2 + 70, center[1] * 0.6 + 60), 15, tag)
-    my_make_curvy_line(canvas, (center[0] * 0.2, center[1] * 0.6 + 0), (center[0] * 0.2 + 20, center[1] * 0.6 + 40),
-                       (center[0] * 0.2 + 70, center[1] * 0.6 + 10), 15, tag)
+    my_make_curvy_line(canvas, (center[0] * 0.2, center[1] * 0.5 + 50), (center[0] * 0.2 + 20, center[1] * 0.5 + 20),
+                       (center[0] * 0.2 + 70, center[1] * 0.5 + 10), 15, tag)
+
+    my_make_curvy_line(canvas, (center[0] * 0.2 - 50, center[1] * 0.5 + 60),
+                       (center[0] * 0.2 - 10, center[1] * 0.5 + 70), (center[0] * 0.2 + 10, center[1] * 0.5 + 100), 15,
+                       tag)
+    my_make_curvy_line(canvas, (center[0] * 0.2, center[1] * 0.5 + 100), (center[0] * 0.2 + 20, center[1] * 0.5 + 70),
+                       (center[0] * 0.2 + 70, center[1] * 0.5 + 60), 15, tag)
+    my_make_curvy_line(canvas, (center[0] * 0.2, center[1] * 0.5 + 0), (center[0] * 0.2 + 20, center[1] * 0.5 + 40),
+                       (center[0] * 0.2 + 70, center[1] * 0.5 + 10), 15, tag)
     ###################
     make_rectangle(canvas, (center[0] * 0.80, center[1] * 0.6), 20, center[1] * 0.22, "black", tag)
     make_rectangle(canvas, (0, center[1] * 0.82), center[0], center[1] * 0.18, "brown", tag)
+
+    # branches
     my_make_curvy_line(canvas,
                        (center[0] * 0.8 - 50, center[1] * 0.6 + 10),
                        (center[0] * 0.8 - 10, center[1] * 0.6 + 20),
@@ -129,5 +133,6 @@ def make_landscape_object(canvas, center, size=100, tag="landscape"):
                        15,
                        tag)
 
+    #ground
     make_rectangle(canvas, (0, center[1] * 0.82), center[0], center[1] * 0.18,
                    random.choice(['brown', 'pink', 'green']), tag)
