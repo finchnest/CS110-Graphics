@@ -13,13 +13,15 @@ def check_for_win(mover, sign):
             values_dictionary[7] == values_dictionary[5] == values_dictionary[3] == sign) or (
             values_dictionary[1] == values_dictionary[9] == values_dictionary[5] == sign):
         print(mover + " won")
-        return True
+        return [True, "win"]
     else:
         arr = [9]
         for k, v in values_dictionary.items():
             arr.append(bool(v))
-            if all(arr):
-                return False
+        if all(arr):
+            print("tie")
+            return [False, "tie"]
+        return [False, ""]
 
 
 def value_precense_checker():
@@ -43,8 +45,6 @@ def computerMove(mark):
         chosen = random.choice(empty_vals)
         values_dictionary[chosen] = mark
         print("computer selected ", chosen)
-    else:
-        print("Tie")
 
 
 def user_move(mark):
@@ -89,21 +89,29 @@ while True:
         user_move(user_choice)
         printUpdatedBoard()
         check_for_win("user", user_choice)
-        if (check_for_win("user", user_choice)):
+        if (check_for_win("user", user_choice)[0]):
+            break
+        elif (check_for_win("user", user_choice)[1] == "tie"):
             break
         computerMove(comp_choice)
         printUpdatedBoard()
         check_for_win("comp", comp_choice)
-        if (check_for_win("comp", comp_choice)):
+        if (check_for_win("comp", comp_choice)[0]):
+            break
+        elif (check_for_win("comp", comp_choice)[1] == "tie"):
             break
     else:
         computerMove(comp_choice)
         printUpdatedBoard()
         check_for_win("comp", comp_choice)
-        if (check_for_win("comp", comp_choice)):
+        if (check_for_win("comp", comp_choice)[0]):
+            break
+        elif (check_for_win("comp", comp_choice)[1] == "tie"):
             break
         user_move(user_choice)
         printUpdatedBoard()
         check_for_win("user", user_choice)
-        if (check_for_win("user", user_choice)):
+        if (check_for_win("user", user_choice)[0]):
+            break
+        elif (check_for_win("user", user_choice)[1] == "tie"):
             break
