@@ -3,6 +3,29 @@ import random
 values_dictionary = {1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: ""}
 
 
+def check_for_win(mover, sign):
+    if (values_dictionary[1] == values_dictionary[2] == values_dictionary[3] == sign) or (
+            values_dictionary[4] == values_dictionary[5] == values_dictionary[6] == sign) or (
+            values_dictionary[7] == values_dictionary[8] == values_dictionary[9] == sign) or (
+            values_dictionary[1] == values_dictionary[4] == values_dictionary[7] == sign) or (
+            values_dictionary[2] == values_dictionary[5] == values_dictionary[8] == sign) or (
+            values_dictionary[3] == values_dictionary[6] == values_dictionary[9] == sign) or (
+            values_dictionary[7] == values_dictionary[5] == values_dictionary[3] == sign) or (
+            values_dictionary[1] == values_dictionary[9] == values_dictionary[5] == sign):
+        print(mover + " won")
+        return True
+    else:
+        arr = [9]
+        for k, v in values_dictionary.items():
+            arr.append(bool(v))
+            if all(arr):
+                return False
+
+
+def value_precense_checker():
+    return
+
+
 def printUpdatedBoard():
     print(values_dictionary[7] + "      |" + values_dictionary[8] + "       |" + values_dictionary[9])
     print("-" * 15)
@@ -65,10 +88,22 @@ while True:
     if (starter == "user"):
         user_move(user_choice)
         printUpdatedBoard()
+        check_for_win("user", user_choice)
+        if (check_for_win("user", user_choice)):
+            break
         computerMove(comp_choice)
         printUpdatedBoard()
+        check_for_win("comp", comp_choice)
+        if (check_for_win("comp", comp_choice)):
+            break
     else:
         computerMove(comp_choice)
         printUpdatedBoard()
+        check_for_win("comp", comp_choice)
+        if (check_for_win("comp", comp_choice)):
+            break
         user_move(user_choice)
         printUpdatedBoard()
+        check_for_win("user", user_choice)
+        if (check_for_win("user", user_choice)):
+            break
